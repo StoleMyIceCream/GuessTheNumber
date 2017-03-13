@@ -22,9 +22,9 @@ app.controller('GuessController', function GuessController($scope,$timeout) {
 	}
 
     $scope.addEvent = function() {
-    if ($scope.difference > 0) {x = 'lower';}
-    else if ($scope.difference < 0){x = 'higher';}
-    else {x = "Win";}
+    if ($scope.difference > 0) {x = 'Your try is lower ';}
+    else if ($scope.difference < 0){x = 'Your try is higher';}
+    else {x = "Hohoho! We have a winner";}
 	$scope.events.push({
 		badgeClass: 'info',
 		badgeIconClass: 'glyphicon-check',
