@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="guess">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guess the Number</title>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-timeline/dist/angular-timeline.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-timeline/dist/angular-timeline-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-timeline/dist/angular-timeline-animations.css">
+
+</head>
+
+<body ng-controller="GuessController">
+  <div class="">
+      <div class="jumbotron text-center">
+        <h1> Guess the Number </h1>
+        <h2>Guess a number between 1 and 1000</h2>
+      </div>
+      <div class="container-fluid">
+       <div class="row">
+        <div class="col-sm-4">
+          <h2 class="text-center"> your guess: </h2>
+          <p> <input type="text" class="form-control" id="usr" ng-model="user"/> </p>
+          <div class="btn-group btn-group-justified">
+          <a href="#" ng-click="verify();addEvent();onTimeout()" class="btn btn-primary">Verify</a>
+          <a href="#" ng-click="reloadRoute()" class="btn btn-primary">Restart</a>
+          </div>
+          <p class="text-center">Tries : <span class="badge">{{tries}}</span></p>
+        </div>
+        <div class="col-sm-6">
+          <timeline>
+            <timeline-event ng-repeat="event in events | orderBy:'-when' | limitTo:5" side="right">
+              <timeline-badge class="{{event.badgeClass}}">
+                <i class="glyphicon {{event.badgeIconClass}}"></i>
+              </timeline-badge>
+              <timeline-panel class="{{event.badgeClass}}">
+                <timeline-heading>
+                  <h4>You tried {{event.title}}</h4>
+                  </timeline-heading>
+                  <p>{{event.content}}</p>
+                  <p ng-if="event.when">{{event.when}} seconds</p>
+              </timeline-panel>
+            </timeline-event>
+          </timeline>
+        </div>
+       </div>
+      </div>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="bower_components/angular-timeline/dist/angular-timeline.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+</body>
+</html>
